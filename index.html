@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>企业公网资产暴露面测绘 · 3 天出报告</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#0f172a;line-height:1.7;background:#fff}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+.hero{background:linear-gradient(160deg,#0f172a,#1e3a5f 60%,#2f5597);color:#fff;padding:72px 0 64px}
+.hero h1{font-size:36px;line-height:1.3;letter-spacing:-.5px;font-weight:800}
+.hero h1 em{font-style:normal;color:#fbbf24}
+.hero p{color:#cbd5e1;font-size:17px;margin-top:18px;max-width:620px}
+.badge{display:inline-block;background:rgba(255,255,255,.14);color:#bfdbfe;font-size:13px;padding:7px 16px;border-radius:20px;margin-bottom:22px;letter-spacing:.5px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.kpi{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:18px}
+.kpi b{display:block;font-size:30px;font-weight:800}
+.kpi span{color:#94a3b8;font-size:13px}
+section{padding:56px 0;border-bottom:1px solid #eef2f7}
+h2{font-size:24px;margin-bottom:8px;letter-spacing:-.3px}
+.sub{color:#64748b;font-size:14px;margin-bottom:28px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:#f8fafc;border-radius:12px;padding:20px;border:1px solid #eef2f7}
+.step b{display:block;color:#2f5597;font-size:13px;margin-bottom:8px;letter-spacing:1px}
+.step h3{font-size:16px;margin-bottom:6px}
+.step p{font-size:14px;color:#475569}
+table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid #eef2f7;border-radius:10px;overflow:hidden}
+th{background:#2f5597;color:#fff;padding:11px 14px;text-align:left;font-weight:500;font-size:13px}
+td{padding:10px 14px;border-bottom:1px solid #eef2f7;color:#334155}
+tr:last-child td{border-bottom:none}
+.p0{color:#dc2626;font-weight:700}.p1{color:#d97706;font-weight:700}.p3{color:#16a34a;font-weight:700}
+code{background:#eef2f7;padding:2px 7px;border-radius:4px;font-size:13px;color:#1e40af}
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border:1px solid #e2e8f0;border-radius:14px;padding:24px}
+.card.hot{border-color:#2f5597;box-shadow:0 8px 28px rgba(47,85,151,.12);position:relative}
+.card.hot::after{content:"最常见";position:absolute;top:-11px;right:18px;background:#2f5597;color:#fff;font-size:11px;padding:3px 10px;border-radius:10px}
+.card h3{font-size:16px;margin-bottom:6px}
+.card .p{font-size:30px;font-weight:800;color:#2f5597;margin:10px 0 4px}
+.card .p small{font-size:14px;color:#64748b;font-weight:400}
+.card ul{list-style:none;margin-top:14px;font-size:14px;color:#475569}
+.card li{padding-left:18px;position:relative;margin-bottom:7px}
+.card li::before{content:"✓";position:absolute;left:0;color:#16a34a;font-weight:700}
+.note{background:#fffbeb;border-left:3px solid #fbbf24;padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;color:#78350f;margin-top:24px}
+.faq dt{font-weight:600;margin-top:22px}
+.faq dd{color:#475569;font-size:15px;margin-top:6px}
+.cta{background:#0f172a;color:#fff;padding:56px 0;text-align:center}
+.cta h2{color:#fff}
+.cta p{color:#94a3b8;margin:12px 0 26px}
+.btn{display:inline-block;background:#fbbf24;color:#0f172a;font-weight:700;padding:15px 34px;border-radius:10px;text-decoration:none}
+footer{padding:32px 0;color:#94a3b8;font-size:13px;text-align:center}
+@media(max-width:720px){.kpis,.steps,.price{grid-template-columns:1fr}.hero h1{font-size:27px}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="badge">被动测绘 · 不接触系统 · 不读数据</div>
+  <h1>你的公网上，可能挂着<br><em>几个不该对外开放的系统</em></h1>
+  <p>用公开信息摸清企业在公网上的全部资产，按风险分级，输出一份能直接交给运维的报告。3 天交付。</p>
+  <div class="kpis">
+    <div class="kpi"><b>231</b><span>典型客户子域数</span></div>
+    <div class="kpi"><b>3 天</b><span>从委托到报告</span></div>
+    <div class="kpi"><b>0 元</b><span>首次体检</span></div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <h2>问题出在哪</h2>
+  <p class="sub">不是管理失职，是三个结构性问题叠加</p>
+  <div class="steps">
+    <div class="step"><b>01 资产是长出来的</b><h3>开完没人回收</h3><p>研发申请域名开了测试环境，上线后没人记得删解析。三年后它还活着。</p></div>
+    <div class="step"><b>02 证书删不掉</b><h3>记录永久公开</h3><p>每张 HTTPS 证书都进公开透明度日志。DNS 删了，记录仍在，攻击者据此推算你的命名规律。</p></div>
+    <div class="step"><b>03 命名泄露目标</b><h3>等于递地图</h3><p>admin / test / internal / vpn / oa——外人不用扫，光看名字就知道打哪个。</p></div>
+  </div>
+  <div class="note">
+    最危险的是：内部系统按「内网可信」设计——没 WAF、没登录频率限制、默认口令没改。
+    一旦暴露到公网，这些假设同时失效。
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>报告长什么样</h2>
+  <p class="sub">每条资产都带分级和处置建议，可直接转给运维执行</p>
+  <table>
+    <tr><th>主机</th><th>类型</th><th>状态</th><th>级别</th><th>处置建议</th></tr>
+    <tr><td><code>atrust.example.com</code></td><td>VPN 网关</td><td>可达</td><td class="p0">P0</td><td>IP 白名单 + MFA</td></tr>
+    <tr><td><code>crmadfs.example.com</code></td><td>AD 联合认证</td><td>可达</td><td class="p0">P0</td><td>仅允许公司出口 IP</td></tr>
+    <tr><td><code>cvat-red.example.com</code></td><td>图像标注平台</td><td>可达</td><td class="p0">P0</td><td>DNS 摘除 / 内网解析</td></tr>
+    <tr><td><code>exam.example.com</code></td><td>内部考试系统</td><td>可达</td><td class="p0">P0</td><td>迁入内网</td></tr>
+    <tr><td><code>cn-uat.iot.example.com</code></td><td>UAT 环境</td><td>404</td><td class="p1">P1</td><td>统一测试网关</td></tr>
+    <tr><td><code>app.example.com</code></td><td>对外业务</td><td>200</td><td class="p3">P3</td><td>保持监控</td></tr>
+  </table>
+  <div class="note">报告另附 Excel 台账：每一行一台主机，带类型、状态、分级、处置建议，可直接作为等保测评的资产底稿。</div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>怎么收费</h2>
+  <p class="sub">先免费查一遍，看到结果再决定付不付</p>
+  <div class="price">
+    <div class="card">
+      <h3>基础版</h3>
+      <div class="p">¥199<small> /次</small></div>
+      <ul><li>1 个主域，≤100 子域</li><li>PDF 报告 + Excel 台账</li><li>3 个工作日</li></ul>
+    </div>
+    <div class="card hot">
+      <h3>标准版</h3>
+      <div class="p">¥499<small> /次</small></div>
+      <ul><li>≤500 子域，含风险分析</li><li>修复优先级排序</li><li>30 天免费复测</li></ul>
+    </div>
+    <div class="card">
+      <h3>机构合作</h3>
+      <div class="p">¥600<small> 起/份</small></div>
+      <ul><li>面向测评/集成机构外包</li><li>可作测评底稿附件</li><li>批量更优</li></ul>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap faq">
+  <h2>常见问题</h2>
+  <dl>
+    <dt>会动我们的系统吗？</dt>
+    <dd>不会。只做两件事：查公开的域名证书日志，每个地址访问一次首页确认存活。不登录、不试密码、不下载数据、不改任何配置。</dd>
+    <dt>这算黑客行为吗？</dt>
+    <dd>不算。属于资产盘点——信息全部来自公开渠道，和你查自己公司商标在哪些网站公示过是一回事。</dd>
+    <dt>需要提供什么？</dt>
+    <dd>一个主域名。其他都不用。</dd>
+    <dt>报告能直接给等保测评用吗？</dt>
+    <dd>可以。Excel 台账就是按测评底稿的字段做的：主机、类型、状态、分级、处置建议。</dd>
+    <dt>查完没问题怎么办？</dt>
+    <dd>如实告你没发现高危，报告当基线存档。不会硬找问题收钱。</dd>
+  </dl>
+</div></section>
+
+<div class="cta" id="apply"><div class="wrap">
+  <h2>先免费查一遍</h2>
+  <p>填两个字段，24 小时内把完整报告发到你邮箱。不满意不用付。</p>
+  <form class="f" onsubmit="return go(event)">
+    <input id="dom" placeholder="公司域名，例如 example.com" required>
+    <input id="mail" type="email" placeholder="你的邮箱" required>
+    <button type="submit">申请免费体检</button>
+  </form>
+  <div class="fhint">或直接发邮件到 h2697930443@gmail.com</div>
+</div></div>
+<style>
+.f{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:620px;margin:0 auto}
+.f input{flex:1;min-width:200px;padding:14px 16px;border-radius:9px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit}
+.f input::placeholder{color:#94a3b8}
+.f button{background:#fbbf24;color:#0f172a;font-weight:700;border:0;padding:14px 30px;border-radius:9px;font-size:15px;cursor:pointer;font-family:inherit}
+.f button:hover{background:#fcd34d}
+.fhint{color:#64748b;font-size:13px;margin-top:16px}
+</style>
+<script>
+function go(e){
+  e.preventDefault();
+  var d=document.getElementById('dom').value.trim();
+  var m=document.getElementById('mail').value.trim();
+  var subj='申请资产测绘体检 - '+d;
+  var body='公司域名：'+d+'\n联系邮箱：'+m+'\n称呼：\n\n（发送后 24 小时内回报告）';
+  window.location.href='mailto:h2697930443@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  return false;
+}
+</script>
+
+<footer>企业公网资产测绘 · 被动信息收集 · 全国远程交付</footer>
+</body></html>
