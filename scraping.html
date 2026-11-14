@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>网页数据采集 · 表格整理 · 3 天交付</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#0f172a;line-height:1.75;background:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.hero{background:linear-gradient(150deg,#0b3b2e,#12664f 55%,#1a8a68);color:#fff;padding:64px 0 56px}
+.hero h1{font-size:33px;line-height:1.34;font-weight:800;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:#fde68a}
+.hero p{color:#c9e8dc;margin-top:16px;font-size:16px;max-width:640px}
+.badge{display:inline-block;background:rgba(255,255,255,.16);color:#d1fae5;font-size:12.5px;padding:6px 14px;border-radius:20px;margin-bottom:18px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:16px}
+.kpi b{display:block;font-size:26px;font-weight:800}
+.kpi span{color:#a7d8c6;font-size:12px}
+section{padding:48px 0;border-bottom:1px solid #eef2f7}
+h2{font-size:21px;margin-bottom:6px}
+.sub{color:#64748b;font-size:13.5px;margin-bottom:24px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;border:1px solid #eef2f7;border-radius:10px;overflow:hidden}
+th{background:#12664f;color:#fff;padding:10px 12px;text-align:left;font-weight:500;font-size:12.5px}
+td{padding:9px 12px;border-bottom:1px solid #eef2f7;color:#334155}
+tr:last-child td{border-bottom:none}
+.note{background:#ecfdf5;border-left:3px solid #10b981;padding:14px 18px;border-radius:0 8px 8px 0;font-size:13.5px;color:#065f46;margin-top:22px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid #e2e8f0;border-radius:14px;padding:22px}
+.card.hot{border-color:#12664f;box-shadow:0 8px 26px rgba(18,102,79,.12);position:relative}
+.card.hot::after{content:"最常见";position:absolute;top:-11px;right:16px;background:#12664f;color:#fff;font-size:11px;padding:3px 10px;border-radius:10px}
+.card h3{font-size:15px;margin-bottom:8px}
+.card .p{font-size:26px;font-weight:800;color:#12664f;margin:8px 0 2px}
+.card .p small{font-size:13px;color:#64748b;font-weight:400}
+.card ul{list-style:none;margin-top:12px;font-size:13.5px;color:#475569}
+.card li{padding-left:17px;position:relative;margin-bottom:6px}
+.card li::before{content:"✓";position:absolute;left:0;color:#10b981;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{background:#f8fafc;border:1px solid #eef2f7;border-radius:12px;padding:18px}
+.step b{display:block;color:#12664f;font-size:12.5px;letter-spacing:1px;margin-bottom:6px}
+.step h3{font-size:14px;margin-bottom:4px}
+.step p{font-size:13px;color:#64748b}
+.cta{background:#0b3b2e;color:#fff;padding:52px 0;text-align:center}
+.cta h2{color:#fff}
+.cta p{color:#a7d8c6;margin:12px 0 24px}
+.f{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:600px;margin:0 auto}
+.f input{flex:1;min-width:190px;padding:13px 15px;border-radius:9px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font-size:14.5px;font-family:inherit}
+.f input::placeholder{color:#a7d8c6}
+.f button{background:#fde68a;color:#0b3b2e;font-weight:700;border:0;padding:13px 28px;border-radius:9px;font-size:14.5px;cursor:pointer;font-family:inherit}
+footer{padding:32px 0;color:#94a3b8;font-size:13px;text-align:center}
+a{color:#12664f}
+@media(max-width:700px){.cards,.steps,.kpis{grid-template-columns:1fr}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="badge">静态页 / 动态渲染 / 反爬 / 定时任务</div>
+  <h1>把你每天手工复制的表格<br><em>变成一条自动跑的流水线</em></h1>
+  <p>竞品价格、商品信息、企业名录、招投标公告、招聘岗位、评论舆情——发网址和字段，先给你 20 条免费样本，觉得对再下单。</p>
+  <div class="kpis">
+    <div class="kpi"><b>20 条</b><span>免费样本</span></div>
+    <div class="kpi"><b>3 天</b><span>标准交付</span></div>
+    <div class="kpi"><b>7 天</b><span>免费修</span></div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <h2>能做什么</h2>
+  <p class="sub">说清楚要什么，剩下的交给我</p>
+  <table>
+    <tr><th>任务</th><th>典型场景</th><th>交付</th></tr>
+    <tr><td>单站数据采集</td><td>电商商品、详情页、评论、价格</td><td>Excel / CSV</td></tr>
+    <tr><td>多源聚合</td><td>3-5 个竞品站对比</td><td>统一字段的合并表</td></tr>
+    <tr><td>定时监控</td><td>每天看价格/库存变化</td><td>每日增量 + 变更告警</td></tr>
+    <tr><td>名录整理</td><td>企业名单、展会名录、招标公告</td><td>去重后的标准表</td></tr>
+    <tr><td>表格清洗</td><td>几百条数据合并、去重、格式统一</td><td>规范 Excel + 核对说明</td></tr>
+    <tr><td>接口对接</td><td>把采集结果写进你自己的系统</td><td>API / 数据库写入</td></tr>
+  </table>
+  <div class="note">
+    难的不是"抓一次"，是"抓三个月还在跑"。站点改版、加验证、限流都会让脚本失效——
+    所以我会做失败重试、断点续采、以及异常告警（数据为空时告你，而不是默默返回空表）。
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>怎么合作</h2>
+  <p class="sub">四步，先看效果再付钱</p>
+  <div class="steps">
+    <div class="step"><b>STEP 1</b><h3>你说需求</h3><p>发网址 + 要哪些字段</p></div>
+    <div class="step"><b>STEP 2</b><h3>我做样本</h3><p>20 条真实数据，当天给</p></div>
+    <div class="step"><b>STEP 3</b><h3>确认下单</h3><p>觉得对，再谈价格和周期</p></div>
+    <div class="step"><b>STEP 4</b><h3>交付源码</h3><p>数据 + 代码，你能自己跑</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>价格</h2>
+  <p class="sub">按难度定价，先报价再干活</p>
+  <div class="cards">
+    <div class="card">
+      <h3>表格整理</h3>
+      <div class="p">¥50<small> 起</small></div>
+      <ul><li>已有数据，做清洗去重</li><li>1-2 天</li><li>含核对说明</li></ul>
+    </div>
+    <div class="card hot">
+      <h3>单站采集</h3>
+      <div class="p">¥300<small> 起</small></div>
+      <ul><li>1 个站点，≤10 字段</li><li>含反爬处理</li><li>源码交付</li></ul>
+    </div>
+    <div class="card">
+      <h3>定时 + 告警</h3>
+      <div class="p">¥800<small> 起</small></div>
+      <ul><li>每天自动跑</li><li>变更告警</li><li>含 1 个月维护</li></ul>
+    </div>
+  </div>
+  <div class="note">
+    站点需要登录才能看的数据：用你自己的账号，我只写程序，不碰你的凭据。
+    个人隐私数据、破解他人账号——不接。
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>常见问题</h2>
+  <table>
+    <tr><td style="width:38%"><strong>会封我 IP 吗</strong></td><td>采集时用限速和请求头轮换，控制在对方能承受的频率；必要时用代理池。</td></tr>
+    <tr><td><strong>网站改版了怎么办</strong></td><td>7 天内免费修。之后的维护可以按次或按月。</td></tr>
+    <tr><td><strong>代码给我吗</strong></td><td>给。源码 + 运行说明，你自己或你的同事能跑。</td></tr>
+    <tr><td><strong>数据能直接进我的系统吗</strong></td><td>可以，输出 CSV / Excel / JSON 或直接写你的数据库。</td></tr>
+    <tr><td><strong>多久能好</strong></td><td>单站 3 天，多站 5-7 天，加急另算。</td></tr>
+  </table>
+</div></section>
+
+<div class="cta"><div class="wrap">
+  <h2>先给你 20 条样本</h2>
+  <p>发网址和字段，当天出结果。觉得对再谈钱。</p>
+  <form class="f" onsubmit="return go(event)">
+    <input id="url" placeholder="要采集的网址" required>
+    <input id="mail" type="email" placeholder="你的邮箱" required>
+    <button type="submit">申请免费样本</button>
+  </form>
+</div></div>
+
+<footer>
+  <p>数据采集与清洗 · 源码交付 · 7 天免费修</p>
+  <p style="margin-top:8px"><a href="./index.html">← 资产测绘服务</a> ｜ <a href="mailto:h2697930443@gmail.com">h2697930443@gmail.com</a></p>
+</footer>
+
+<script>
+function go(e){
+  e.preventDefault();
+  var u=document.getElementById('url').value.trim();
+  var m=document.getElementById('mail').value.trim();
+  var subj='申请数据采集样本 - '+u;
+  var body='目标网址：'+u+'\n联系邮箱：'+m+'\n需要的字段：\n采集频率：一次性 / 每天\n\n（发送后当天回样本）';
+  window.location.href='mailto:h2697930443@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  return false;
+}
+</script>
+</body></html>
