@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>案例：13 家企业公网资产体检结果</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#0f172a;line-height:1.75;background:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.hero{background:linear-gradient(160deg,#0f172a,#1e3a5f 60%,#2f5597);color:#fff;padding:64px 0 56px}
+.hero h1{font-size:32px;line-height:1.35;font-weight:800;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:#fbbf24}
+.hero p{color:#cbd5e1;margin-top:16px;font-size:16px}
+.badge{display:inline-block;background:rgba(255,255,255,.14);color:#bfdbfe;font-size:12.5px;padding:6px 14px;border-radius:20px;margin-bottom:18px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.kpi{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:16px}
+.kpi b{display:block;font-size:26px;font-weight:800}
+.kpi span{color:#94a3b8;font-size:12px}
+section{padding:48px 0;border-bottom:1px solid #eef2f7}
+h2{font-size:21px;margin-bottom:6px}
+.sub{color:#64748b;font-size:13.5px;margin-bottom:24px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;border:1px solid #eef2f7;border-radius:10px;overflow:hidden}
+th{background:#2f5597;color:#fff;padding:10px 12px;text-align:left;font-weight:500;font-size:12.5px}
+td{padding:9px 12px;border-bottom:1px solid #eef2f7;color:#334155}
+tr:last-child td{border-bottom:none}
+.p0{color:#dc2626;font-weight:700}
+.bar{display:inline-block;height:9px;background:#2f5597;border-radius:5px;vertical-align:middle}
+.note{background:#fffbeb;border-left:3px solid #fbbf24;padding:14px 18px;border-radius:0 8px 8px 0;font-size:13.5px;color:#78350f;margin-top:22px}
+.case{background:#f8fafc;border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid #eef2f7}
+.case h3{font-size:15px;margin-bottom:8px;color:#1e3a5f}
+.case p{font-size:13.5px;color:#475569}
+.case .tag{display:inline-block;background:#fee2e2;color:#991b1b;font-size:11.5px;padding:2px 8px;border-radius:10px;margin-right:6px}
+footer{padding:36px 0;color:#94a3b8;font-size:13px;text-align:center}
+a{color:#2f5597}
+@media(max-width:680px){.kpis{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="wrap">
+  <div class="badge">真实数据 · 客户信息已脱敏</div>
+  <h1>我给 <em>13 家</em>企业做了公网资产体检<br>其中 <em>12 家</em>都有不该暴露的系统</h1>
+  <p>全部只用公开信息：证书透明度日志、公开 DNS、每个地址一次首页访问。没有一次登录、没有一次漏洞利用。</p>
+  <div class="kpis">
+    <div class="kpi"><b>13</b><span>受测企业</span></div>
+    <div class="kpi"><b>1,481</b><span>子域记录</span></div>
+    <div class="kpi"><b>37</b><span>高危暴露</span></div>
+    <div class="kpi"><b>12/13</b><span>存在问题</span></div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <h2>整体情况</h2>
+  <p class="sub">13 家企业覆盖制造、汽车、航空、教育、家电、化工等行业，规模从几十人到上万人</p>
+  <table>
+    <tr><th>企业类型</th><th>子域记录</th><th>当前可解析</th><th>高危（内部系统暴露）</th></tr>
+    <tr><td>智能制造（消费电子）</td><td>231</td><td>87</td><td class="p0">8</td></tr>
+    <tr><td>高等职业院校</td><td>160</td><td>72</td><td class="p0">6</td></tr>
+    <tr><td>工程机械集团</td><td>91</td><td>31</td><td class="p0">5</td></tr>
+    <tr><td>汽车整车厂</td><td>215</td><td>117</td><td class="p0">3</td></tr>
+    <tr><td>民航运输</td><td>200</td><td>50</td><td class="p0">2</td></tr>
+    <tr><td>高校（师范类）</td><td>120</td><td>120</td><td class="p0">3</td></tr>
+    <tr><td>民办教育集团</td><td>64</td><td>47</td><td class="p0">3</td></tr>
+    <tr><td>智慧物联（安防）</td><td>102</td><td>32</td><td class="p0">1</td></tr>
+    <tr><td>其他 5 家</td><td>298</td><td>96</td><td class="p0">6</td></tr>
+  </table>
+  <div class="note">
+    最关键的一点：<strong>只有 1 家没有任何高危暴露</strong>，而它的子域记录只有 4 条——不是做得好，是资产本来就少。
+    资产规模越大，暴露面越大，这是结构性的。
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>暴露的都是什么系统</h2>
+  <p class="sub">按出现频率排序（同一类系统在多家企业重复出现）</p>
+  <table>
+    <tr><th>系统类型</th><th>出现次数</th><th>为什么危险</th></tr>
+    <tr><td>管理后台（admin / manage / console）</td><td>11</td><td>直接可登录，弱口令即失守</td></tr>
+    <tr><td>测试环境（test / uat / dev / stage）</td><td>9</td><td>无认证、数据常为生产数据副本</td></tr>
+    <tr><td>VPN / 远程接入（atrust / ssl-vpn）</td><td>6</td><td>入口级系统，被攻破等于进内网</td></tr>
+    <tr><td>认证服务（adfs / ldap / sso）</td><td>5</td><td>账号体系入口</td></tr>
+    <tr><td>监控平台（grafana / zabbix / kibana）</td><td>4</td><td>暴露全部服务器拓扑</td></tr>
+    <tr><td>研发工具（gitlab / jenkins / harbor）</td><td>4</td><td>源码与构建权限</td></tr>
+    <tr><td>数据库 / 缓存管理面板</td><td>3</td><td>直连业务数据</td></tr>
+  </table>
+</div></section>
+
+<section><div class="wrap">
+  <h2>三个典型场景（已脱敏）</h2>
+
+  <div class="case">
+    <h3>案例 A：图像标注平台对公网开放</h3>
+    <p><span class="tag">高危</span>某消费电子企业的 <code>cvat-red.xxx.com</code> 可从公网直接打开登录页。
+    这是研发在用的图像标注平台，里面是产品训练数据。IT 部门完全不知道它还在跑——三年前的一个内部项目。</p>
+  </div>
+
+  <div class="case">
+    <h3>案例 B：VPN 网关没有来源限制</h3>
+    <p><span class="tag">高危</span>某制造企业的 VPN 登录页对整个互联网开放。这类设备是勒索软件团伙的重点目标——
+    历史上多个 VPN 产品出过认证绕过漏洞，一旦被利用就直接进入内网。</p>
+  </div>
+
+  <div class="case">
+    <h3>案例 C：测试环境带着生产数据</h3>
+    <p><span class="tag">高危</span>某高校的 <code>test-xxx.edu.cn</code> 无需登录即可访问，
+    页面里是真实的师生信息表。测试环境通常没有脱敏流程，这是最常见的数据泄露路径。</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>修复成本：几乎为零</h2>
+  <p class="sub">这些不是"要买设备"的问题，是配置问题</p>
+  <table>
+    <tr><th>措施</th><th>工作量</th><th>成本</th></tr>
+    <tr><td>内部系统从公网 DNS 摘除，改内网解析</td><td>30 分钟/个</td><td>0</td></tr>
+    <tr><td>摘不掉的加 IP 白名单</td><td>20 分钟/个</td><td>0</td></tr>
+    <tr><td>测试环境收进带认证的统一网关</td><td>半天</td><td>0</td></tr>
+    <tr><td>新证书签发时告警（防止再长出新的）</td><td>1 小时</td><td>0</td></tr>
+  </table>
+  <div class="note">
+    真正难的不是修，是<strong>知道有哪些</strong>。内部台账只有"应该存在"的系统，
+    公开信息里才有"实际暴露"的系统。这两份清单的差集，就是风险。
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>方法论</h2>
+  <p class="sub">全流程只读，可复现</p>
+  <ol style="padding-left:22px;color:#475569;font-size:14px;line-height:2">
+    <li><strong>被动枚举</strong>：从证书透明度日志与公开 DNS 源收集子域，不向目标发送任何请求</li>
+    <li><strong>解析确认</strong>：用公共 DNS 判断哪些记录当前还有 IP，剔除历史遗留</li>
+    <li><strong>单次探活</strong>：每个存活主机只访问一次首页，记录状态码、标题、中间件</li>
+    <li><strong>语义分类</strong>：按主机名归类为内部系统 / 测试环境 / 管理后台 / 接口服务等</li>
+    <li><strong>风险分级</strong>：仅对"当前可解析 + 内部系统"判高危，避免把死链报成漏洞</li>
+    <li><strong>报告交付</strong>：PDF（结论 + 清单 + 修复优先级）+ Excel（逐主机台账，按等保底稿字段）</li>
+  </ol>
+  <div class="note">
+    误报控制：早期版本把 SPA 站点的软 404 当成"发现"，22 条命中里真实为 0。
+    现在每个候选路径都要和随机路径的响应做基线对比，长度一致直接丢弃。
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>这项服务适合谁</h2>
+  <table>
+    <tr><th>对象</th><th>场景</th></tr>
+    <tr><td>等保测评机构</td><td>测评前的资产梳理环节，可直接作为底稿附件</td></tr>
+    <tr><td>系统集成商 / 安全服务商</td><td>给客户做安全巡检时的"资产盘点"增值项</td></tr>
+    <tr><td>企业 IT / 安全负责人</td><td>季度自查、投标前自查、被甲方问安全状况时</td></tr>
+    <tr><td>准备等保的企业</td><td>先摸清家底，避免测评现场答不上来</td></tr>
+  </table>
+</div></section>
+
+<footer>
+  <p>数据来源为公开信息被动测绘，不包含任何漏洞验证结果。</p>
+  <p style="margin-top:8px">联系方式：<a href="mailto:h2697930443@gmail.com">h2697930443@gmail.com</a></p>
+</footer>
+</body></html>
