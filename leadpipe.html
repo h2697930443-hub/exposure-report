@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leadpipe — scrape, structure, score, export</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,"SF Pro Text",Segoe UI,sans-serif;max-width:900px;margin:0 auto;padding:48px 24px 80px;color:#16181d;line-height:1.7;font-size:15px}
+h1{font-size:30px;margin:0 0 6px;letter-spacing:-.5px}
+.sub{color:#6b7280;font-size:15px;margin-bottom:36px}
+h2{font-size:19px;margin:44px 0 14px;padding-left:11px;border-left:4px solid #d6323f}
+pre{background:#12161d;color:#d8dee9;padding:18px 20px;border-radius:8px;overflow-x:auto;font-size:13px;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:16px 0}
+th{background:#f4f5f7;text-align:left;padding:9px 11px;border-bottom:2px solid #e3e5e9;font-weight:600}
+td{padding:9px 11px;border-bottom:1px solid #eceef1;vertical-align:top}
+td.gA{color:#0a7c3f;font-weight:700}
+td.gB{color:#b8860b;font-weight:700}
+td.gC{color:#9aa0a6}
+a{color:#1f4fd8;text-decoration:none}
+a:hover{text-decoration:underline}
+.note{background:#fff8e6;border-left:4px solid #e0a800;padding:14px 18px;border-radius:0 6px 6px 0;margin:20px 0;font-size:14px}
+ul{padding-left:20px}
+li{margin:7px 0}
+code{background:#f0f1f4;padding:2px 6px;border-radius:4px;font-size:13px}
+.kpi{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
+.kpi div{background:#f7f8fa;border:1px solid #e6e8ec;border-radius:8px;padding:14px 20px;min-width:118px}
+.kpi b{display:block;font-size:24px;line-height:1.2}
+.kpi span{font-size:12.5px;color:#6b7280}
+</style>
+</head>
+<body>
+
+<h1>Leadpipe</h1>
+<p class="sub">Scrape → structure → score intent → export CSV. Config-driven, fails loudly, idempotent.</p>
+
+<div class="kpi">
+  <div><b>60</b><span>leads</span></div>
+  <div><b>1</b><span>grade A</span></div>
+  <div><b>0</b><span>failed</span></div>
+  <div><b>1</b><span>config to change source</span></div>
+</div>
+
+<h2>Run it</h2>
+<pre>python3 leadpipe.py --source hn --limit 60 --out leads.csv
+
+  ... 10/60
+  ... 20/60
+  ... 60/60
+
+output: leads.csv
+total 60 | A 1 | B 0 | C 59 | failed 0</pre>
+
+<h2>Real output (top of file)</h2>
+<table>
+<tr><th>Grade</th><th>Score</th><th>Lead</th><th>Why</th></tr>
+<tr><td class='gB'>B</td><td>4</td><td><a href='https://news.ycombinator.com/item?id=50497009' target='_blank'>Italy fines Meta $887M over Android users&#x27; data access</a></td><td>技术需求相关|预算信号</td></tr>
+<tr><td class='gC'>C</td><td>2</td><td><a href='https://news.ycombinator.com/item?id=50499017' target='_blank'>Lovable apps expose passport details and more than 200K private messag</a></td><td>技术需求相关</td></tr>
+<tr><td class='gC'>C</td><td>2</td><td><a href='https://news.ycombinator.com/item?id=50474959' target='_blank'>Reverse engineering my Coway air purifier to ditch the cloud</a></td><td>技术需求相关</td></tr>
+<tr><td class='gC'>C</td><td>2</td><td><a href='https://news.ycombinator.com/item?id=50496602' target='_blank'>Tech companies are trying to shift the concept of privacy again</a></td><td>技术需求相关</td></tr>
+<tr><td class='gC'>C</td><td>2</td><td><a href='https://news.ycombinator.com/item?id=50474883' target='_blank'>Chinese frontier AI models carry the fingerprint of export-controlled </a></td><td>技术需求相关</td></tr>
+<tr><td class='gC'>C</td><td>2</td><td><a href='https://news.ycombinator.com/item?id=50441444' target='_blank'>Generative AI uses more energy on non-English text</a></td><td>技术需求相关</td></tr>
+<tr><td class='gC'>C</td><td>2</td><td><a href='https://news.ycombinator.com/item?id=50497132' target='_blank'>Show HN: A terminal-native idle factory game, written in Rust with rat</a></td><td>技术需求相关</td></tr>
+<tr><td class='gC'>C</td><td>2</td><td><a href='https://news.ycombinator.com/item?id=50444761' target='_blank'>Show HN: I have trained 15 blood glucose forecasting models on my own </a></td><td>技术需求相关</td></tr>
+</table>
+<p style="font-size:13px;color:#6b7280">Every row carries <code>source_url</code> — click through and verify. Nothing here is generated.</p>
+
+<h2>Four decisions that matter</h2>
+<ul>
+<li><b>Fail loudly, never return an empty table.</b> If the list endpoint comes back empty, the script exits with an error. Silent empty output is the worst failure mode: the buyer thinks "no leads today" when the parser actually broke.</li>
+<li><b>Idempotent.</b> <code>unique_key = md5(source + original_id)</code>. Running it every hour will not duplicate rows.</li>
+<li><b>Intent scoring is explainable.</b> Each row carries a <code>signals</code> field — <code>hiring | budget | tech need</code> — so the buyer can audit why a lead is grade A. No black box.</li>
+<li><b>Config-driven.</b> A source is two URLs: a list endpoint and a detail endpoint. Swapping platforms means adding one dict entry, not editing code.</li>
+</ul>
+
+<div class="note">
+<b>What this is not:</b> the demo runs against a public API (no login, reproducible) rather than a vertical-specific site.
+A real engagement plugs in the client's own account or a public source they can legally collect. I say that up front rather than showing a scraped dashboard I cannot prove.
+</div>
+
+<h2>What a real engagement changes</h2>
+<pre>SOURCES["client_platform"] = {
+    "list_url": "https://.../api/list?page={page}",
+    "item_url": "https://.../api/detail/{id}",
+    "site_url": "https://.../item/{id}",
+}</pre>
+<p>Plus: their account for authenticated sources, rate limiting with Retry-After respect, and a field map to their export format.</p>
+
+<h2>Also in this repo</h2>
+<ul>
+<li><a href="./">Asset exposure recon</a> — subdomain discovery, classification, risk grading, PDF/Excel report</li>
+<li><a href="scraping.html">Scraping notes</a> — what I check before quoting a scraping job</li>
+</ul>
+
+<p style="margin-top:56px;font-size:13px;color:#9aa0a6">
+Contact: h2697930443@gmail.com &middot; <a href="https://www.fiverr.com/s/VrDwkxx">Fiverr</a>
+</p>
+
+</body>
+</html>
